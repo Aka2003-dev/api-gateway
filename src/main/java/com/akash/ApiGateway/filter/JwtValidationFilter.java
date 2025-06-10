@@ -32,7 +32,8 @@ public class JwtValidationFilter extends AbstractGatewayFilterFactory<JwtValidat
 
             return webClientBuilder.build()
                     .get()
-                    .uri("http://localhost:8081/api/auth/validate?token=" + token) // use direct localhost if no service registry
+                    //.uri("http://localhost:8081/api/auth/validate?token=" + token) // use direct localhost if no service registry
+                    .uri("https://auth-service-efev.onrender.com/api/auth/validate?token=" + token)
                     .retrieve()
                     .toBodilessEntity()
                     .flatMap(response -> chain.filter(exchange))
